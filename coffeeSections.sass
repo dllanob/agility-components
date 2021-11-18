@@ -1,0 +1,247 @@
+$color_moreinfo: #B37F3B !default
+$space: 2.5em
+$paddingTableCells: 3em
+$buttonPX: 36px
+
++all
+    html
+        .g
+            .g_coffeeSections
+                .g_bg
+                    +transition($duration_medium)
+                    &::after
+                        content: ""
+                        +fit
+                        +transition($duration_medium)
+
+                .g_table
+                    display: table
+                    table-layout: fixed
+                    width: 100%
+                    .g_tableCell
+                        display: table-cell
+                        vertical-align: middle
+                        .g_ccpLink
+                            display: block
+                            position: relative
+                            transition: .5s
+                            +transform-origin(left center)
+
+                            span
+                                position: absolute
+                                left: 50%
+                                width: 50%
+                                +translate(-50%, 0)
+                                bottom: -1.5em
+                                opacity: 1
+                                color: white
+                                transition: .5s
+                                font-size: pxToEm(18)
+                                letter-spacing: pxToEm(1)
+                                text-transform: uppercase
+
+                        .g_sectionShapes
+                            height: 30em
+                            width: 100%
+                            background-repeat: no-repeat
+                            background-size: contain
+
+                        &:not(.g_tile)
+                            padding-left: $paddingTableCells
+
+                        &.g_tile
+                            .g_tileCapsule
+                                height: 140px;
+                                background-size: 210px;
+                                background-repeat: no-repeat;
+                                background-position-x: center;
+                            .g_tileCoffee
+                                padding: 50px
+                                background-color: rgba(255,255,255,0.8)
+                            .g_tileRecipe
+                                height: 19em
+                                width: 100%
+                                background: black
+                                .g_tileRecipeImage
+                                    position: relative
+                                    height: 100%
+                                    background-repeat: no-repeat
+                                    background-position: center center
+                                    background-size: cover
+                                    &::after
+                                        content: ''
+                                        +fit
+                                        +linear-gradient(top, rgba(black, 0), rgba(black, 1), 0%, 20%)
+
+                                .g_wysiwyg
+                                    position: relative
+                                    p
+                                        color: white
+                                        text-align: center
+                                        position: relative
+                                        bottom: 2em
+                                    span
+                                        text-transform: uppercase
+                                        font-weight: bolder
+                            .g_roundButton
+                                width: 3em;
+                                height: 3em;
+                                margin-top: 50px
+                                background-color: #B37F3B
+
+                &.g_even
+                    .g_table
+                        direction: rtl
+                        .g_tableCell
+                            direction: ltr
+                            &:not(.g_tile)
+                                padding-left: 0em
+                                padding-right: $paddingTableCells
+                            &.g_tile
+                                padding-right: 0em
+                                padding-left: $paddingTableCells
+
+                        .g_ccpLink
+                            +transform-origin(right center)
+
+        &:not(.g_isTouch)
+            .g
+                .g_coffeeSections
+                    .g_table
+                        .g_tableCell
+                            .g_ccpLink
+                                    span
+                                        opacity: 0
+
+                    #g_bg
+                        +scale(1.02)
+                        &::after
+                            background-color: rgba(black,.5)
+
+                        & + .g_restrict
+                            .g_table
+                                .g_tableCell
+                                    .g_ccpLink
+                                        +scale(1.02)
+                                        span, i
+                                            opacity: 1
+
+
+        &.g_isTouch
+            .g_ccpLink
+                span
+                    text-shadow: 0 0 1px black, 0 0 0.2em rgba(black, 1), 0 0 1em rgba(black, 1), 0 0 2em rgba(black, 1)
+
+
++desktop
+    .g
+        .g_coffeeSections
+            &#vl_mexico
+                background: #043f5c
+            &#vl_colombia
+                background: #473142
+            &#ol_indonesia
+                background: #00414B
+            &#ol_ethiopia
+                background: #5e361b
+            &#ol_colombia
+                background: #3f2922
+            &#ol_india
+                background: #17573a
+            &#ol_nicaragua
+                background: #524610
+
++tablet
+    // &.g_isTouch
+    .g
+        .g_coffeeSections
+            &.g_even
+                .g_bg
+                    &::before
+                        content: ''
+                        +fit
+                        +linear-gradient(top, rgba(black, 0), rgba(black, 0.2), 20%, 80%)
+                    &::after
+                        content: ''
+                        +fit
+                        +linear-gradient(top right, rgba(black, 0), rgba(black, 0.3), 20%, 70%)
+
+            .g_bg
+                &::before
+                    content: ''
+                    +fit
+                    +linear-gradient(top, rgba(black, 0), rgba(black, 0.2), 20%, 70%)
+                &::after
+                    content: ''
+                    +fit
+                    +linear-gradient(top left, rgba(black, 0), rgba(black, 0.3), 20%, 70%)
+
++mobile
+    .g
+        .g_coffeeSections
+            .g_bg
+                height: 100vw
+                &::after
+                    content: ''
+                    +fit
+                    +linear-gradient(top, rgba(black, 0), rgba(black, 1), 0%, 35%)
+
+            .g_ccpLink
+                span
+                    position: absolute
+                    color: white
+                    top: 20em
+                    left: 0
+                    right: 0
+                    &:after
+                        content: ' >'
+
+                .g_sectionShapes
+                    position: absolute
+                    background-repeat: no-repeat
+                    background-position: bottom center
+                    background-size: contain
+                    top: 0
+                    left: 0
+                    +translate(0, 5%)
+                    height: 20em
+                    width: 100%
+
+            &.g_mobileBottom
+                .g_restrict
+                    padding-top: 105vw
+                    .g_content
+                        padding: 0
+                        .g_table
+                            .g_tableCell
+                                display: block
+
+                                &.g_tile
+                                    padding: 0
+
+                                    .g_fairtrade
+                                        background-repeat: no-repeat
+                                        background-position: top left
+                                        background-size: 4em auto
+
+                                    .g_tileCoffee
+                                        padding: 0
+                                        background-color: white
+
+                                        .g_tileCapsule
+                                            background-size: 150px auto
+                                            height: 7.5em
+                                        .g_h3
+                                            margin: .5em 0
+                                        .g_roundButton
+                                            margin: $space - 1em
+
+                                    .g_tileRecipe
+                                        height: 16em
+                                        margin: 0
+                                        padding: 0
+                                        margin-bottom: 1.5em
+
+                                        .g_wysiwyg
+                                            p
+                                                bottom: 1.5em
